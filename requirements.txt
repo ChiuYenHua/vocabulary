@@ -3,3 +3,6 @@ streamlit==1.18.1
 google-oauth2-tool==0.0.3
 gspread==5.9.0
 pandas==1.4.4
+streamlit-book==0.7.5
+streamlit_option_menu==0.3.6
+pathlib==1.0.1
