@@ -17,7 +17,7 @@ with stb.echo("below", show_code):
     #         for i in f.readlines():
     #             previous_txt += i
 
-    #     st.session_state["default"] = previous_txt
+    st.session_state["default"] = ''
 
     # if st.button('Refresh'):
     #     read_file()
