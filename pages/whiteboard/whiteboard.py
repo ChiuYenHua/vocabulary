@@ -5,8 +5,15 @@ st.title('Whiteboard')
 
 show_code = st.checkbox("Show code?")
 with stb.echo("below", show_code):
+
+
     if st.button('Refresh'):
-        st.experimental_rerun()
+        previous_txt = ''
+        with open('./pages/whiteboard/whiteboard_text.txt', 'r+') as f:
+            for i in f.readlines():
+                previous_txt += i
+
+        st.session_state["default"] = previous_txt
 
     if "default" not in st.session_state:
         previous_txt = ''
