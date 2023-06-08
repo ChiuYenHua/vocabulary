@@ -1,12 +1,22 @@
 import streamlit as st
 
+
 if "default" not in st.session_state:
-    st.session_state["default"] = "Default text" * 100
+    previous_txt = ''
+    with open('./pages/whiteboard/whiteboard_text.txt', 'r+') as f:
+        for i in f.readlines():
+            previous_txt += i
 
-my_area = st.text_area(
-    ":blue[My text here :]", value=st.session_state["default"], height=2000
-)
+    st.session_state["default"] = previous_txt
 
-if st.button("Update default example"):
-    st.session_state["default"] = "Updated text" * 100
+
+response = st.text_area("WHITEBOARD", value=st.session_state["default"], height=800)
+
+if st.button("Update whiteboard"):
+    with open('./pages/whiteboard/whiteboard_text.txt', 'w+') as f:
+        f.writelines(response)
+        
+    st.session_state["default"] = 'Text is upadated!!!!!!!!!'
     st.experimental_rerun()
+
+
