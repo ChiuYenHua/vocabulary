@@ -17,11 +17,19 @@ selected = option_menu(None, df_name_list,
                         key='menu', orientation="horizontal")
 
 
-for index, name in enumerate(df_name_list):
-    if selected==name:
-        question_list, options_list, answer_list = question_builder(df_list[index])
+question_list, options_list, answer_list = question_builder(df_list[df_name_list.index(selected)])
 
-        for i in range(len(answer_list)):
-            stb.single_choice(question_list[i],
-                                options_list[i],
-                                answer_list[i])
+user_response = []
+
+for i in range(len(answer_list)):
+    user_response.append(    
+        st.radio(
+                question_list[i],
+                options_list[i])
+    )
+
+
+# for i in range(len(answer_list)):
+#     stb.single_choice(question_list[i],
+#                         options_list[i],
+#                         answer_list[i])
