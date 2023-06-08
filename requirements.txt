@@ -6,3 +6,4 @@ pandas==1.4.4
 streamlit-book==0.7.5
 streamlit_option_menu==0.3.6
 pathlib==1.0.1
+schedule==1.2.0
