@@ -19,6 +19,7 @@ def random_weighted_select(english_list, weight, count):
 
     return question_keys
 
+@st.cache_resource(ttl=600)
 def question_builder(df):
     #------------------------------------ Preprocess Data ------------------------------------#
     # Read data of right_wrong 

@@ -24,9 +24,27 @@ user_response = []
 for i in range(len(answer_list)):
     user_response.append(    
         st.radio(
-                question_list[i],
-                options_list[i])
+            question_list[i],
+            options_list[i])
     )
+
+if st.button('Submit!!'):
+    for i in range(len(answer_list)):
+        user_response_index = options_list[i].index(user_response[i])
+
+        if user_response_index==answer_list[i]:
+            st.success('Correct!!', icon="✅")
+            st.write(f'question: {question_list[i]}')
+            st.write(f'choose: {options_list[i][user_response_index]}')
+            st.write(f'answer: {options_list[i][answer_list[i]]}')
+        else:
+            st.error('Wrong!!', icon="🚨")
+            st.write(f'question: {question_list[i]}')
+            st.write(f'choose: {options_list[i][user_response_index]}')
+            st.write(f'answer: {options_list[i][answer_list[i]]}')
+            
+
+        st.write('-------------------------------')
 
 
 # for i in range(len(answer_list)):
