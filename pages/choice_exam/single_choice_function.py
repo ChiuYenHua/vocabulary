@@ -19,7 +19,7 @@ def random_weighted_select(english_list, weight, count):
 
     return question_keys
 
-@st.cache_resource(ttl=600)
+@st.cache_data
 def question_builder(df):
     #------------------------------------ Preprocess Data ------------------------------------#
     # Read data of right_wrong 
@@ -71,5 +71,7 @@ def question_builder(df):
         options_list.append(shuffle_4_options)
         answer_list.append(answer_position)
 
-
     return question_list, options_list, answer_list
+
+def record_right_wrong(user_response, user_response_right_wrong):
+    pass

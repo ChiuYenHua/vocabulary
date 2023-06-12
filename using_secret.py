@@ -5,7 +5,7 @@ import streamlit as st
     
 #------------------------------------- Get Data -------------------------------------#
 # Uses st.cache_data to only return when the query changes or after 10 min.
-@st.cache_resource(ttl=600)
+@st.cache_resource(ttl=3600)
 def get_googleSheet():
     # Make list to store all google worksheets into DataFrame and name, too
     df_list = []
@@ -32,7 +32,11 @@ def get_googleSheet():
     for i in range(len(sheet.worksheets())):
         every_worksheet = sheet.get_worksheet(i)
 
-        df_list.append(pd.DataFrame(every_worksheet.get_all_records()))
+        no_header_df = pd.DataFrame(every_worksheet.get_values())[[0,1]]
+        with_header_df = pd.DataFrame(no_header_df.values[1:], columns=no_header_df.iloc[0])
+
+        df_list.append(with_header_df)
         df_name_list.append(every_worksheet.title)
     
     return df_name_list, df_list
+
